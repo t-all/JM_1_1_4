@@ -25,7 +25,8 @@ public class Util {
             Driver driver = new com.mysql.cj.jdbc.Driver();
             DriverManager.registerDriver(driver);
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            System.out.println("Соединение установленно");
+            connection.setAutoCommit(false);
+            System.out.println("Соединение установлено");
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Ошибка соединения");
@@ -53,7 +54,7 @@ public class Util {
                     .applySettings(configuration.getProperties()).build();
 
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
-            System.out.println("Соединение установленно");
+            System.out.println("Соединение установлено");
 
         } catch (Exception e) {
             e.printStackTrace();
